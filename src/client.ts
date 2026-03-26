@@ -226,9 +226,10 @@ export async function connectToServer(
   const stderrChunks: string[] = [];
 
   return withRetry(async () => {
+    const clientName = process.env.MCP_CLIENT_NAME || 'mcp-cli';
     const client = new Client(
       {
-        name: 'mcp-cli',
+        name: clientName,
         version: VERSION,
       },
       {
